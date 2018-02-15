@@ -19,6 +19,10 @@ var users = new mongoose.Schema(
         "token": String,
         "hash": String,
         "salt": String,
+        "rooms": [{
+            "type": mongoose.Schema.Types.ObjectId,
+            "ref": "Room"
+          }],
         "activated": Boolean
     });
   
@@ -26,3 +30,4 @@ var users = new mongoose.Schema(
 users.plugin(uniqueValidator, { message: "{PATH} is already taken" });
   // 2) Definir le model - A faire qu'une fois
 module.exports  = mongoose.model("Users", users);
+
